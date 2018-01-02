@@ -33,8 +33,10 @@ void lineSegment()
 
 	glColor3f(1.0, 0.0, 0.0);  
 	//glPointSize(100);// Set line segment color to red
-	glBegin(GL_POINTS);
+	glBegin(GL_LINES);
 
+	glVertex3f(200, 75, 0);
+	glColor3f(0.0, 1.0, 0.0);
 	glVertex3f(100, 75, 0);
 	glEnd();
 
@@ -107,17 +109,17 @@ int main(int argc,char* argv[])
 
 {
 	vector<int>v;
-	//v.insert(v.begin(), 1);
-	//glutInit(&argc, argv);
-	//glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-	//glutInitWindowPosition(50, 100);
-	//glutInitWindowSize(400, 300);
-	//glutCreateWindow("opengl");
-	//glClearColor(1.0, 1.0, 1.0, 0);
-	//glMatrixMode(GL_PROJECTION);
-	//gluOrtho2D(0, 200, 0, 150);
-	//glutDisplayFunc(lineSegment);
-	//glutMainLoop();
+	v.insert(v.begin(), 1);
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowPosition(50, 100);
+	glutInitWindowSize(400, 300);
+	glutCreateWindow("opengl");
+	glClearColor(1.0, 1.0, 1.0, 0);
+	glMatrixMode(GL_PROJECTION);
+	gluOrtho2D(0, 200, 0, 150);
+	glutDisplayFunc(lineSegment);
+	glutMainLoop();
 	char* a = "123456";
 	char*b=new char;
 	strcopy(b, a, strlen(a));

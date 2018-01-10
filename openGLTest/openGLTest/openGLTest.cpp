@@ -26,6 +26,8 @@ using namespace std;
 //	glMatrixMode(GL_PROJECTION);            // set projection parameters
 //	gluOrtho2D(0.0, 200.0, 0.0, 150.0);
 //}
+typedef GLint vertex3 [3];
+vertex3 pt[8] = { {0,0,0},{0,75,0},{100,0,0},{100,75,0},{0,0,100},{0,75,100},{100,0,100},{100,75,100} };
 
 void lineSegment()
 {
@@ -33,13 +35,10 @@ void lineSegment()
 
 	glColor3f(1.0, 0.0, 0.0);  
 	//glPointSize(100);// Set line segment color to red
-	glBegin(GL_LINES);
-
-	glVertex3f(200, 75, 0);
-	glColor3f(0.0, 1.0, 0.0);
-	glVertex3f(100, 75, 0);
-	glEnd();
-
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_INT, 0, pt);
+	GLubyte vertexIndex[] = { 6,2,3,7,5,1,0,4,7,3,1,5,4,0,2,6,2,0,1,3,7,5,4,6 };
+	glDrawElements(GL_QUADS, 24, GL_UNSIGNED_BYTE, vertexIndex);
 	glFlush();                              // Process all OpenGL routines as quickly as possible
 }
 
